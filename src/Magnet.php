@@ -9,13 +9,36 @@ class Magnet {
     return ('magnet' == parse_url($link, PHP_URL_SCHEME));
   }
 
+  public static function isXTv1(string $xt) : bool
+  {
+    return ('urn' == parse_url($xt, PHP_URL_SCHEME) && false !== strpos($xt, ':btih:'));
+  }
+
+  public static function isXTv2(string $xt) : bool
+  {
+    return ('urn' == parse_url($xt, PHP_URL_SCHEME) && false !== strpos($xt, ':btmh:'));
+  }
+
+  public static function filterInfoHash(string $value) : string
+  {
+    return str_replace(
+      [
+        'urn:',
+        'btih:',
+        'btmh:',
+      ],
+      false,
+      $value
+    );
+  }
+
   public static function parse(string $link) : mixed
   {
     $result =
     [
-      'xt'   => null,
       'dn'   => null,
       'xl'   => 0,
+      'xt'   => [],
       'tr'   => [],
       'ws'   => [],
       'as'   => [],
@@ -37,6 +60,7 @@ class Magnet {
       [
         'magnet:',
         '?',
+        'xt=',
         'tr=',
         'ws=',
         'as=',
@@ -47,6 +71,7 @@ class Magnet {
       [
         false,
         false,
+        'xt[]=',
         'tr[]=',
         'ws[]=',
         'as[]=',
