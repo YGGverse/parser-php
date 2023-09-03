@@ -21,14 +21,16 @@ class Magnet {
 
   public static function filterInfoHash(string $value) : string
   {
-    return str_replace(
-      [
-        'urn:',
-        'btih:',
-        'btmh:',
-      ],
-      false,
-      $value
+    return trim(
+      str_replace(
+        [
+          'urn:',
+          'btih:',
+          'btmh:',
+        ],
+        false,
+        $value
+      )
     );
   }
 
