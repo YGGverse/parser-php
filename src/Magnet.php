@@ -16,7 +16,7 @@ class Magnet {
 
   public static function isXTv2(string $xt) : bool
   {
-    return ('urn' == parse_url($xt, PHP_URL_SCHEME) && false !== strpos($xt, ':btmh:'));
+    return ('urn' == parse_url($xt, PHP_URL_SCHEME) && false !== strpos($xt, ':btmh:1220'));
   }
 
   public static function filterInfoHash(string $value) : string
@@ -26,7 +26,7 @@ class Magnet {
         [
           'urn:',
           'btih:',
-          'btmh:',
+          'btmh:1220',
         ],
         false,
         $value
