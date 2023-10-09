@@ -1,6 +1,6 @@
 <?php
 
-namespace YGGverse\Parser\Tests;
+namespace Yggverse\Parser\Tests;
 
 use PHPUnit\Framework\TestCase;
 

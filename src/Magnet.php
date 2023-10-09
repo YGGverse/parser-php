@@ -1,6 +1,6 @@
 <?php
 
-namespace YGGverse\Parser;
+namespace Yggverse\Parser;
 
 class Magnet {
 
